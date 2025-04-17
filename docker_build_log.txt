@@ -1,0 +1,24 @@
+## Docker Build Log for FinRL Project
+
+**Target Build Command:**
+```bash
+docker build -t finrl-lab -f docker/Dockerfile .
+```
+
+**Previous Build Issues & Resolutions:**
+
+1.  **Issue:** `pygame` build failed due to missing `longintrepr.h` (Python 3.12 incompatibility with older pygame).
+    *   **Resolution:** Added `pygame>=2.5.2` explicitly to `requirements.txt`.
+
+2.  **Issue:** `gym` metadata generation failed (dependency conflict, likely due to older `gym` version pulled by other packages) - **Persisted after previous resolution attempts.**
+    *   **Resolution Attempt 1:**
+        *   Removed `gymnasium` from `requirements.txt`.
+        *   Changed `stable-baselines3` to `stable-baselines3[extra]` in `requirements.txt`.
+        *   Removed `-I` flag from `pip install` in `docker/Dockerfile`.
+    *   **Resolution Attempt 2 (Current):** Commented out `elegantrl` in `requirements.txt` (suspected source of `gym` dependency issue).
+
+**Result:**
+Build **SUCCESSFUL** after commenting out `elegantrl`.
+
+**Next Step:**
+Run the Docker container using the built image. 

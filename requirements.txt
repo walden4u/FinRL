@@ -1,10 +1,9 @@
 alpaca-py
 alpaca_trade_api>=2.1.0
 ccxt>=1.66.32
-elegantrl
+# elegantrl
 
 gputil
-gymnasium
 importlib-metadata==4.13.0
 jqdatasdk
 
@@ -22,8 +21,7 @@ pyfolio-reloaded
 
 # testing requirements
 pytest
-ray[default]
-ray[tune]
+ray
 recommonmark
 
 # Model Building Requirements
@@ -45,7 +43,7 @@ stable-baselines3[extra]
 stockstats>=0.4.0
 swig
 
-TA-lib # conda install -c conda-forge ta-lib
+# TA-lib # conda install -c conda-forge ta-lib
 
 tensorboard
 webdriver-manager
@@ -55,3 +53,5 @@ wrds
 
 # market data & paper trading API
 yfinance
+
+pygame>=2.5.2
